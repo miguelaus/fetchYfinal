@@ -643,7 +643,7 @@ setTimeout( () => { Swal.fire({
 							  background: "black",
 							  color: "white",
 
-							})}, 1500)
+							})}, 500)
 
 
 
@@ -651,20 +651,20 @@ setTimeout( () => { Swal.fire({
 setTimeout( () => { Swal.fire({
 							  position: 'top-end',
 							  icon: 'info',
-							  title: 'Si vas a pagar en moneda extranjera revisa el valor de cambio en el boton "$',
+							  title: 'Si vas a pagar en moneda extranjera revisa el valor de cambio en el boton "$" antes de finalizar tu compra',
 							  showConfirmButton: false,
-							  timer: 4500,
+							  timer: 5500,
 							  toast: true,  	
 							  iconcolor: "green",
 							  timerProgressBar: true,
 							  background: "black",
 							  color: "white",
 
-							})}, 11500)
+							})}, 12500)
 
 
 
-
+//incorporacion boton de cambio fetch de cotizacion 
 
 let btnCotizacion = document.getElementById("botonCotizacion")
 
@@ -745,7 +745,7 @@ function cargarProductosCarrito(array){
 							  showConfirmButton: false,
 							  timer: 2500
 							});
-        parrafoCompra.innerHTML = `El total de su carrito es ${acumulador}`
+        parrafoCompra.innerHTML = `El total de su carrito es €${acumulador}`
     	
 }
 
@@ -1084,7 +1084,7 @@ clienteNuevo.addEventListener("click", ()=>{
 	localStorage.setItem("Clientes", arrayClientesJSON) }else{
 		Swal.fire({
 				  position: 'center',
-				  olor: "white",
+				  color: "white",
 				  background: "black",
 				  icon: 'error',
 				  title: 'Algunos de los campos para el registro, está incompleto. Verificalos porfavor',
