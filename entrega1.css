@@ -84,3 +84,7 @@ form input {
 }
 
 
+.fieldset {
+	display: flex;
+	flex-wrap: wrap;
+}

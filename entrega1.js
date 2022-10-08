@@ -604,6 +604,8 @@ botonFinalizarCompra.addEventListener ("click", () => { if ( productosEnCarrito 
 		    ); 
 		    productosEnCarrito = [];
 		    localStorage.removeItem("Compra");
+		    modalBody.innerHTML = ""
+
 
 		  }else{
 		  	Swal.fire({
@@ -620,7 +622,7 @@ botonFinalizarCompra.addEventListener ("click", () => { if ( productosEnCarrito 
 				})
 		  }
 		})
-	console.log (compraEnEnvio)
+	
 }})
 
 
@@ -698,6 +700,25 @@ fetch(`https://${host}/latest?amount=1&from=EUR&to=USD`)
 
 
 
+//boton eliminar producto 
+
+let eliminarDelCarrito = (productoCarrito)=>{
+
+	let item = productosEnCarrito.find((elem)=> elem.id === productoCarrito.id)
+	
+    productosEnCarrito.splice(item,1);
+
+	cargarProductosCarrito(productosEnCarrito);
+
+}
+
+
+
+
+
+
+
+
 // Optimizacion con ternario (IF)
 
 
@@ -716,11 +737,12 @@ function cargarProductosCarrito(array){
 	                    <h4 class="card-title">${productoCarrito.version}</h4>
 	                    <p class="card-text"> ${productoCarrito.size}</p>
 	                    <p class="card-text">€${productoCarrito.precio}</p> 
-	                    <button onclick="eliminarDelCarrito(${productoCarrito.id })" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+	                    <button onclick= "eliminarDelCarrito(${productoCarrito.id})" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
 	            </div>    
 	        
 	        
 	        </div>`
+
 
     })
     //calcular el total y aplicacion && para envio gratuito
@@ -749,7 +771,6 @@ function cargarProductosCarrito(array){
     	
 }
 
-
    
     compraTotal(array)
 }
@@ -760,17 +781,6 @@ function cargarProductosCarrito(array){
 
 
 
-//boton eliminar producto 
-
-const eliminarDelCarrito =(productoCarrito)=>{
-
-const item = productosEnCarrito.find((elem)=> elem.id === productoCarrito)
-
-    productosEnCarrito.splice(item,1)
-
-cargarProductosCarrito(productosEnCarrito);
-
-}
 
 
 
@@ -1090,6 +1100,7 @@ clienteNuevo.addEventListener("click", ()=>{
 				  title: 'Algunos de los campos para el registro, está incompleto. Verificalos porfavor',
 				  showConfirmButton: true,
 				  timer: 3500
+
 				  })
 	}
 })
