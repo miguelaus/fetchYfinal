@@ -605,6 +605,7 @@ botonFinalizarCompra.addEventListener ("click", () => { if ( productosEnCarrito 
 		    productosEnCarrito = [];
 		    localStorage.removeItem("Compra");
 		    modalBody.innerHTML = ""
+		    parrafoCompra.innerHTML = `El total de su carrito es € 0`
 
 
 		  }else{
