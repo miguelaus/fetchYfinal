@@ -1,4 +1,5 @@
 
+//Funciones constructoras
 
 function Pizza(version,precio,size,id,imagen) {
 	this.version = version;
@@ -18,8 +19,6 @@ const pizzaCaprese = new Pizza("caprese", 6, "grande",3, "caprese.jpg")
 let arrayPizzas =[pizzaCaprese, pizzaPrimavera, pizzaMargarita]
 
 
-
-
 function Pasta(version,precio,size,id,imagen) {
 	this.version = version;
 	this.precio = precio;
@@ -35,8 +34,6 @@ const pastaRavioles = new Pasta('ravioles', 4, "grande",5, "ravioles.jpg");
 const pastaMacarrones = new Pasta('macarrones', 4, "grande",6, "macarrones.jpg");
 
 let arrayPasta = [pastaRavioles, pastaSpaghetti, pastaMacarrones]
-
-
 
 
 function Ensalada(version,precio,size,id,imagen) {
@@ -56,8 +53,6 @@ const ensaladaPapaHuevo = new Ensalada('papa y huevo', 5, "mediana",9,"papahuevo
 let arrayEnsalada = [ensaladaCesar, ensaladaPapaHuevo, ensaladaTomateLechuga] 
 
 
-
-
 function Carne(version,precio,size,id,imagen) {
 	this.version = version;
 	this.precio = precio;
@@ -75,7 +70,6 @@ const carneChorizo = new Carne('chorizo', 4, "mediano",13,"chorizo.jpg");
 const carneAsado = new Carne('asado', 6, "mediana",14,"asado.jpg");
 
 let arrayCarne = [carneBife, carneAsado, carneVacio, carneChorizo, carneHamburguesa] 
-
 
 
 function Trago(version,precio,size,id,imagen) {
@@ -130,12 +124,7 @@ const cafeCapuccino = new Cafe('capuccino', 3.5, "chico",23,"capuccino.jpg");
 
 let arrayCafe = [cafeCafe, cafeTe, cafeCapuccino ]
 
-
-
-
 let arrayMenu = arrayEnsalada.concat(arrayCarne, arrayPasta, arrayPizzas, arrayTragos ,arrayCafe, arrayPostres)
-
-
 
 function limpiar() {
 	let divPizzas = document.getElementById("pizzas")
@@ -154,8 +143,6 @@ function limpiar() {
 	divPasta.innerHTML = ""
 	
 }
-
-
 
 
 let productosEnCarrito = []
@@ -194,8 +181,6 @@ function mostrarMenuPizzas(array) {
 
 
 }
-
-
 function agregarAlCarritoPizza (pizza) {
 	productosEnCarrito.push(pizza)
 	swal()
@@ -216,11 +201,6 @@ function swal() {
 		})
 
 }
-
-
-
-
-
 
 function mostrarMenuPasta(array)  { 
 	limpiar()
@@ -260,10 +240,6 @@ function agregarAlCarritoPasta (pasta) {
 }
 
 
-
-
-
-
 function mostrarMenuEnsalada () { 
 	limpiar()
 	let divEnsalada = document.getElementById("ensalada")
@@ -300,9 +276,6 @@ function agregarAlCarritoEnsalada (ensalada) {
 	swal();
 
 }
-
-
-
 
 
 
@@ -345,8 +318,6 @@ function agregarAlCarritoCarne (carne) {
 
 
 
-
-
 function mostrarMenuTragos() { 
 	limpiar()
 	let divTragos = document.getElementById("tragos")
@@ -380,9 +351,6 @@ function agregarAlCarritoTragos (tragos) {
 	productosEnCarrito.push(tragos)
 	swal();
 }
-
-
-
 
 
 
@@ -477,10 +445,9 @@ botonCarrito.addEventListener("click", ()=>{
 
 })
 
-
-
 let compraEnEnvio 
 
+//Funcion de finalizar compra
 
 botonFinalizarCompra.addEventListener ("click", () => { if ( productosEnCarrito == "") { Swal.fire({
 					  icon: 'error',
@@ -540,8 +507,7 @@ botonFinalizarCompra.addEventListener ("click", () => { if ( productosEnCarrito 
 }})
 
 
-
-
+// incorporacion de setTimeout y asincronìa
 
 setTimeout( () => { Swal.fire({
 							  position: 'top-end',
@@ -565,7 +531,7 @@ setTimeout( () => { Swal.fire({
 							  icon: 'info',
 							  title: 'Si vas a pagar en moneda extranjera revisa el valor de cambio en el boton "$" antes de finalizar tu compra',
 							  showConfirmButton: false,
-							  timer: 5500,
+							  timer: 7500,
 							  toast: true,  	
 							  iconcolor: "green",
 							  timerProgressBar: true,
@@ -575,6 +541,8 @@ setTimeout( () => { Swal.fire({
 							})}, 12500)
 
 
+
+//incorporacion boton de cambio fetch de cotizacion (API)
 
 let btnCotizacion = document.getElementById("botonCotizacion")
 
@@ -602,8 +570,7 @@ fetch(`https://${host}/latest?amount=1&from=EUR&to=USD`)
 } )
 
 
-
-
+// Optimizacion ternario
 
 function cargarProductosCarrito(array){
     modalBody.innerHTML = ""
@@ -636,6 +603,7 @@ function cargarProductosCarrito(array){
     	})
     })
 
+    //calculador del total y aplicacion && para envio gratuito
     function compraTotal(array){
     let acumulador = 0
 
@@ -665,7 +633,7 @@ function cargarProductosCarrito(array){
     compraTotal(array)
 }
 
-
+//Funcion Compra total 
 
 function compraTotal(array){
     let acumulador = 0
@@ -684,7 +652,7 @@ function compraTotal(array){
     
 }
 
-
+//botones de menues
 
 
 let mostrarMenuPizzasBtn = document.getElementById("mostrarPizzasBtn")
@@ -729,10 +697,17 @@ let mostrarMenuCompleto = document.getElementById("mostrarMenuBtn")
 
 
 
+
+
+//boton buscar general
+
 let buttonBuscar = document.getElementById("buttonBuscar")
 
 buttonBuscar.addEventListener("click", buscarPorPlato )
 
+
+
+//Buscador de platos
 
 function buscarPorPlato() {
 	let buscarPlato = document.getElementById("buscarPlato")
@@ -863,6 +838,7 @@ function buscarPorPlato() {
 }
 
 
+//Creacion de clientes 
 
 
 function Cliente(nombre,apellido,calle,numeracion,telefono) {
@@ -879,13 +855,7 @@ function Cliente(nombre,apellido,calle,numeracion,telefono) {
 	let numeracionCliente = document.getElementById("numeracionCliente")
 	let telefonoCliente = document.getElementById("telefonoCliente")
 
-
 let arrayClientes = []
-
-
-
-
-
 
 function crearCliente(array) {
 
@@ -925,6 +895,7 @@ Toast.fire({
 })
 }
 
+//Almacenamiento cliente en el LocalStorage
 
 let clienteNuevo = document.getElementById("clienteNuevo")
 
