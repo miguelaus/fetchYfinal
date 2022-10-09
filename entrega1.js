@@ -701,21 +701,6 @@ fetch(`https://${host}/latest?amount=1&from=EUR&to=USD`)
 
 
 
-//boton eliminar producto 
-
-let eliminarDelCarrito = (productoCarrito)=>{
-
-	let item = productosEnCarrito.find((elem)=> elem.id === productoCarrito.id)
-	
-    productosEnCarrito.splice(item,1);
-
-	cargarProductosCarrito(productosEnCarrito);
-
-}
-
-
-
-
 
 
 
@@ -732,20 +717,30 @@ function cargarProductosCarrito(array){
 
         modalBody.innerHTML += `
 
-	        <div class="card border-primary mb-3 d-flex flex-wrap" id ="productoCarrito${productoCarrito.version}" style="max-width: 200px;">
+	        <div class="card border-primary mb-3 d-flex flex-wrap" id="productoCarrito${productoCarrito.id}" style="max-width: 200px;">
 	            <img class="card-img-top" src="images/${productoCarrito.imagen}" alt="${productoCarrito.version}">
 	            <div class="card-body bg-black">
 	                    <h4 class="card-title">${productoCarrito.version}</h4>
 	                    <p class="card-text"> ${productoCarrito.size}</p>
 	                    <p class="card-text">€${productoCarrito.precio}</p> 
-	                    <button onclick= "eliminarDelCarrito(${productoCarrito.id})" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+	                    <button class="btn btn-danger" id="botonEliminar${productoCarrito.id}"><i class="fas fa-trash-alt"></i></button>
 	            </div>    
 	        
 	        
 	        </div>`
+	        localStorage.setItem("compra",JSON.stringify(array));
 
 
     })
+    array.forEach((productoCarrito, indice)=> {
+    	document.getElementById(`botonEliminar${productoCarrito.id}`).addEventListener("click", () => {
+    		array.splice(indice,1);
+    		localStorage.setItem("compra",JSON.stringify(array));
+    		cargarProductosCarrito(array);
+
+    	})
+    })
+
     //calcular el total y aplicacion && para envio gratuito
     function compraTotal(array){
     let acumulador = 0
@@ -775,6 +770,7 @@ function cargarProductosCarrito(array){
    
     compraTotal(array)
 }
+
 
 
 
