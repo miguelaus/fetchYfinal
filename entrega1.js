@@ -143,7 +143,7 @@ function limpiar() {
 	divPasta.innerHTML = ""
 	
 }
-
+// carrito y mostrar menues
 
 let productosEnCarrito = []
 
@@ -433,7 +433,7 @@ function agregarAlCarritoCafe (cafe) {
 }
 
 
-
+//botones del carrito
 
 let botonCarrito = document.getElementById("botonCarrito")
 let modalBody = document.getElementById("modal-body")
