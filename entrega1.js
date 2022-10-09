@@ -1,5 +1,4 @@
 
-//Funciones constructoras
 
 function Pizza(version,precio,size,id,imagen) {
 	this.version = version;
@@ -138,69 +137,6 @@ let arrayMenu = arrayEnsalada.concat(arrayCarne, arrayPasta, arrayPizzas, arrayT
 
 
 
-//buscador por precio maximo
-/*
-
-let buscarPrecio = document.getElementById("buscarPorPrecio"); 
-
-buscarPrecio.addEventListener("click", buscarPorPrecio)
-
-function buscarPorPrecio() {
-
-
-	let	buscarPrecio = prompt("ingrese cifra maxima que desea gastar") 
-
-	let precioBusqueda = arrayMenu.filter((Pizza)=>Pizza.precio <= buscarPrecio)
-	
-		precioBusqueda == 0  ? 
-		alert("No existen productos con ese precio") 
-		: 
-		alert("Los productos encontrados con ese precio son:")
-		for (let precioEncontrado of precioBusqueda) {
-			precioEncontrado.hablar()
-		
-		
-	}
-}
-
-
-
-
-
-
-
-function mostrarMenu() {
-	for (Pizza of arrayPizzas) {Pizza.hablar();}
-	for (Pasta of arrayPasta) {Pasta.hablar();}
-	for (Ensalada of arrayEnsalada) {Ensalada.hablar();}
-	for (Carne of arrayCarne) {Carne.hablar();}
-	for (Trago of arrayTragos) {Trago.hablar();}
-	for (Postre of arrayPostres) {Postre.hablar();}	
-	for (Cafe of arrayCafe) {Cafe.hablar();}	
-}
-
-
-
-function buscarPorId() {
-	let buscarId = parseInt(prompt("Ingrese el CODIGO del plato deseado"));
-
-	let idEncontrado = arrayPizzas.find((Pizza)=>Pizza.id == buscarId )
-    	||  arrayPasta.find((Pasta)=>Pasta.id == buscarId )  		
-		||  arrayEnsalada.find((Ensalada)=>Ensalada.id == buscarId ) 
-		||  arrayCarne.find((Carne)=>Carne.id == buscarId ) 
-		||  arrayTragos.find((Tragos)=>Tragos.id == buscarId ) 
-		||  arrayPostres.find((Postre)=>Postre.id == buscarId ) 
-		||  arrayCafe.find((Cafe)=>Cafe.id == buscarId ) 
-	idEncontrado == undefined  ?
-		console.log("El codigo ingresado no esta asociado a ningun plato"):
-		idEncontrado.idFuction()
-}
-
-*/
-
-
-// Funcion limipiar previa a las cards de Menu
-
 function limpiar() {
 	let divPizzas = document.getElementById("pizzas")
 	let divPasta = document.getElementById('pasta')
@@ -221,7 +157,6 @@ function limpiar() {
 
 
 
-//Mostrardores de menu por categoria
 
 let productosEnCarrito = []
 
@@ -405,6 +340,7 @@ function mostrarMenuCarne () {
 function agregarAlCarritoCarne (carne) {
 	productosEnCarrito.push(carne)
 	swal();
+
 }
 
 
@@ -444,9 +380,6 @@ function agregarAlCarritoTragos (tragos) {
 	productosEnCarrito.push(tragos)
 	swal();
 }
-
-
-
 
 
 
@@ -534,18 +467,6 @@ function agregarAlCarritoCafe (cafe) {
 
 
 
-
-
-
-
-
-
-
-
-// Carrito y Botones del Carrito
-
-
-
 let botonCarrito = document.getElementById("botonCarrito")
 let modalBody = document.getElementById("modal-body")
 let botonFinalizarCompra = document.getElementById("botonFinalizarCompra")
@@ -557,14 +478,6 @@ botonCarrito.addEventListener("click", ()=>{
 })
 
 
-
-
-
-
-
-
-
-//Creacion de envio de compra y captura de "Compra" con || ,  confirmacion de envio final
 
 let compraEnEnvio 
 
@@ -630,10 +543,6 @@ botonFinalizarCompra.addEventListener ("click", () => { if ( productosEnCarrito 
 
 
 
-
-
-// incorporacion de setTimeOut
-
 setTimeout( () => { Swal.fire({
 							  position: 'top-end',
 							  icon: 'info',
@@ -667,8 +576,6 @@ setTimeout( () => { Swal.fire({
 
 
 
-//incorporacion boton de cambio fetch de cotizacion 
-
 let btnCotizacion = document.getElementById("botonCotizacion")
 
 btnCotizacion.addEventListener("click", () => {
@@ -694,18 +601,6 @@ fetch(`https://${host}/latest?amount=1&from=EUR&to=USD`)
   });
 } )
 
-
-
-
-
-
-
-
-
-
-
-
-// Optimizacion con ternario (IF)
 
 
 
@@ -741,7 +636,6 @@ function cargarProductosCarrito(array){
     	})
     })
 
-    //calcular el total y aplicacion && para envio gratuito
     function compraTotal(array){
     let acumulador = 0
 
@@ -773,20 +667,6 @@ function cargarProductosCarrito(array){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-//Compra total con ternario (IF)
-
 function compraTotal(array){
     let acumulador = 0
 
@@ -805,13 +685,6 @@ function compraTotal(array){
 }
 
 
-
-
-
-
-
-
-//botones de menues
 
 
 let mostrarMenuPizzasBtn = document.getElementById("mostrarPizzasBtn")
@@ -856,22 +729,10 @@ let mostrarMenuCompleto = document.getElementById("mostrarMenuBtn")
 
 
 
-
-
-//boton buscar general
-
-
 let buttonBuscar = document.getElementById("buttonBuscar")
 
 buttonBuscar.addEventListener("click", buscarPorPlato )
 
-
-
-
-
-
-
-//Buscador de platos
 
 function buscarPorPlato() {
 	let buscarPlato = document.getElementById("buscarPlato")
@@ -1004,14 +865,6 @@ function buscarPorPlato() {
 
 
 
-
-
-
-
-
-//Creacion de clientes 
-
-
 function Cliente(nombre,apellido,calle,numeracion,telefono) {
 	this.nombre = nombre;
 	this.apellido = apellido;
@@ -1072,11 +925,6 @@ Toast.fire({
 })
 }
 
-
-
-
-
-//Almacenamiento cliente en el LocalStorage
 
 let clienteNuevo = document.getElementById("clienteNuevo")
 
